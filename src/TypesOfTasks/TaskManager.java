@@ -46,7 +46,7 @@ public class TaskManager {
         }
     }
 
-    public Collection<Task> getAllTasks() {
+    public List<Task> getAllTasks() {
         List<Task> allTasks = new ArrayList<>();
         allTasks.addAll(tasks.values());
         allTasks.addAll(epics.values());
