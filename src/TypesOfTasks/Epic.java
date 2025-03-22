@@ -1,6 +1,7 @@
 package TypesOfTasks;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Epic extends Task {
@@ -12,7 +13,7 @@ public class Epic extends Task {
     }
 
     public List<Integer> getSubtasks() {
-        return subtaskIds;
+        return Collections.unmodifiableList(subtaskIds);
     }
 
     public void addSubtask(int subtaskId) {
@@ -51,5 +52,10 @@ public class Epic extends Task {
         } else {
             setStatus(TaskStatus.NEW);
         }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
