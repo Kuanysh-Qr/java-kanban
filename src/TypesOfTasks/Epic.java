@@ -27,34 +27,8 @@ public class Epic extends Task {
         subtaskIds.remove(Integer.valueOf(subtaskId));
     }
 
-    public void updateStatus(TaskManager manager) {
-        if (subtaskIds.isEmpty()) {
-            setStatus(TaskStatus.NEW);
-            return;
-        }
-
-        boolean allDone = true;
-        boolean hasInProgress = false;
-
-        for (int subtaskId : subtaskIds) {
-            Subtask subtask = manager.getSubtaskById(subtaskId);
-            if (subtask == null) continue;
-
-            if (subtask.getStatus() == TaskStatus.NEW) {
-                allDone = false;
-            } else if (subtask.getStatus() == TaskStatus.IN_PROGRESS) {
-                allDone = false;
-                hasInProgress = true;
-            }
-        }
-
-        if (allDone) {
-            setStatus(TaskStatus.DONE);
-        } else if (hasInProgress) {
-            setStatus(TaskStatus.IN_PROGRESS);
-        } else {
-            setStatus(TaskStatus.NEW);
-        }
+    public void clearSubtasks() {
+        subtaskIds.clear();
     }
 
     @Override
