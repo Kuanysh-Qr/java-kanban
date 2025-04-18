@@ -1,9 +1,9 @@
 package TypesTest;
 
-import TypesOfTasks.Epic;
-import TypesOfTasks.InMemoryTaskManager;
-import TypesOfTasks.Subtask;
-import TypesOfTasks.Task;
+import TypesOfTasks.tasks.Epic;
+import TypesOfTasks.managers.InMemoryTaskManager;
+import TypesOfTasks.tasks.Subtask;
+import TypesOfTasks.tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

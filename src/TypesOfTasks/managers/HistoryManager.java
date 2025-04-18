@@ -1,4 +1,6 @@
-package TypesOfTasks;
+package TypesOfTasks.managers;
+
+import TypesOfTasks.tasks.Task;
 
 import java.util.List;
 

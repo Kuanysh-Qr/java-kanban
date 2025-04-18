@@ -1,4 +1,6 @@
-package TypesOfTasks;
+package TypesOfTasks.managers;
+
+import TypesOfTasks.tasks.Task;
 
 import java.util.*;
 
@@ -10,13 +12,15 @@ public class InMemoryHistoryManager implements HistoryManager {
         if (task == null) return;
 
         historyMap.remove(task.getId());
-        historyMap.put(task.getId(), task);
 
-        if (historyMap.size() > 10) {
+        if (historyMap.size() >= 10) {
             Integer firstKey = historyMap.keySet().iterator().next();
             historyMap.remove(firstKey);
         }
+
+        historyMap.put(task.getId(), task);
     }
+
 
     @Override
     public List<Task> getHistory() {

@@ -1,5 +1,11 @@
 package TypesOfTasks;
 
+import TypesOfTasks.managers.Managers;
+import TypesOfTasks.managers.TaskManager;
+import TypesOfTasks.tasks.Epic;
+import TypesOfTasks.tasks.Subtask;
+import TypesOfTasks.tasks.Task;
+
 import java.util.List;
 
 public class Main {

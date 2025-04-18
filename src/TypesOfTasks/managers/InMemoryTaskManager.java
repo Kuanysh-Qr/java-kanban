@@ -1,4 +1,9 @@
-package TypesOfTasks;
+package TypesOfTasks.managers;
+
+import TypesOfTasks.tasks.Epic;
+import TypesOfTasks.tasks.Subtask;
+import TypesOfTasks.tasks.Task;
+import TypesOfTasks.tasks.TaskStatus;
 
 import java.util.*;
 

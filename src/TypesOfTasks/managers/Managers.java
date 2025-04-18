@@ -1,4 +1,4 @@
-package TypesOfTasks;
+package TypesOfTasks.managers;
 
 public class Managers {
 

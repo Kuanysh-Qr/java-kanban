@@ -1,7 +1,7 @@
 package TypesTest;
 
-import TypesOfTasks.Epic;
-import TypesOfTasks.InMemoryTaskManager;
+import TypesOfTasks.tasks.Epic;
+import TypesOfTasks.managers.InMemoryTaskManager;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

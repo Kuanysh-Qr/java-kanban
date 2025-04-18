@@ -1,4 +1,8 @@
-package TypesOfTasks;
+package TypesOfTasks.managers;
+
+import TypesOfTasks.tasks.Epic;
+import TypesOfTasks.tasks.Subtask;
+import TypesOfTasks.tasks.Task;
 
 import java.util.Collection;
 import java.util.List;
