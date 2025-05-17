@@ -9,6 +9,7 @@ public class Subtask extends Task {
         super(id, title, description);
         this.epicId = epicId;
     }
+
     public int getEpicId() {
         return epicId;
     }
