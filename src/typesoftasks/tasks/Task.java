@@ -3,6 +3,7 @@ package typesoftasks.tasks;
 import java.util.Objects;
 
 public class Task {
+
     private final int id;
     private final String title;
     private final String description;
