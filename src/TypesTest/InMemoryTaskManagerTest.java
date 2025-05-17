@@ -1,4 +1,4 @@
-package typestest;
+package TypesTest;
 
 import TypesOfTasks.tasks.Epic;
 import TypesOfTasks.managers.InMemoryTaskManager;
