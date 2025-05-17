@@ -1,4 +1,4 @@
-package TypesTest;
+package typestest;
 
 import TypesOfTasks.managers.InMemoryTaskManager;
 import TypesOfTasks.tasks.Task;
