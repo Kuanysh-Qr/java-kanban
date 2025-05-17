@@ -31,6 +31,7 @@ class InMemoryTaskManagerTest {
         assertEquals("Epic 1", epic.getTitle(), "Заголовок эпика не совпадает.");
         assertEquals("Description of Epic 1", epic.getDescription(), "Описание эпика не совпадает.");
     }
+
     @Test
     void testAddSubtaskToEpic() {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
@@ -39,6 +40,7 @@ class InMemoryTaskManagerTest {
 
         assertTrue(epic.getSubtasks().contains(subtask.getId()), "Подзадача должна быть добавлена к эпик.");
     }
+
     @Test
     void testGetTaskById() {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
@@ -58,6 +60,7 @@ class InMemoryTaskManagerTest {
         assertNotNull(retrievedEpic, "Эпик должен быть найден.");
         assertEquals(epic, retrievedEpic, "Эпики не совпадают.");
     }
+
     @Test
     void testDeleteTaskById() {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
@@ -101,12 +104,5 @@ class InMemoryTaskManagerTest {
         assertEquals(1, history.size(), "История должна содержать одну задачу.");
         assertEquals(task, history.get(0), "Задача в истории не совпадает.");
     }
-
-
-
-
-
-
-
 
 }
