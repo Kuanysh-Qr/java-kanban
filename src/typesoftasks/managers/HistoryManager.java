@@ -1,11 +1,13 @@
-package TypesOfTasks.managers;
+package typesoftasks.managers;
 
-import TypesOfTasks.tasks.Task;
+import typesoftasks.tasks.Task;
 
 import java.util.List;
 
 public interface HistoryManager {
     void add(Task task);
+
     List<Task> getHistory();
+
     void remove(int id);
 }

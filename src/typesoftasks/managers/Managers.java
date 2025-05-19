@@ -1,4 +1,4 @@
-package TypesOfTasks.managers;
+package typesoftasks.managers;
 
 public class Managers {
 

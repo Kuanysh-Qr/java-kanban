@@ -1,4 +1,4 @@
-package TypesOfTasks.tasks;
+package typesoftasks.tasks;
 
 import java.util.Objects;
 
