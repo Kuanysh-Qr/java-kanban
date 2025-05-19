@@ -1,6 +1,6 @@
-package TypesOfTasks.managers;
+package typesoftasks.managers;
 
-import TypesOfTasks.tasks.Task;
+import typesoftasks.tasks.Task;
 
 import java.util.*;
 
