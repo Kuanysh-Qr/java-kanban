@@ -1,10 +1,11 @@
-package TypesOfTasks.tasks;
+package typesoftasks.tasks;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Epic extends Task {
+
     private final List<Integer> subtaskIds;
 
     public Epic(int id, String title, String description) {
