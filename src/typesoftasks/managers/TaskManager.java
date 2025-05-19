@@ -1,3 +1,12 @@
+package typesoftasks.managers;
+
+import typesoftasks.tasks.Epic;
+import typesoftasks.tasks.Subtask;
+import typesoftasks.tasks.Task;
+
+import java.util.Collection;
+import java.util.List;
+
 public interface TaskManager {
     Task createTask(String title, String description);
 
