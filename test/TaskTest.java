@@ -1,7 +1,7 @@
-package TypesTest;
+package typestest;
 
-import TypesOfTasks.managers.InMemoryTaskManager;
-import TypesOfTasks.tasks.Task;
+import typesoftasks.managers.InMemoryTaskManager;
+import typesoftasks.tasks.Task;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
