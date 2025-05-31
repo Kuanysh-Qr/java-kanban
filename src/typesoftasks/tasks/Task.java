@@ -7,12 +7,18 @@ public class Task {
     private final String title;
     private final String description;
     private TaskStatus status;
+    private final TaskType type;
 
-    public Task(int id, String title, String description) {
+    public Task(int id, String title, String description, TaskType type) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = TaskStatus.NEW;
+        this.type = type;
+    }
+
+    public Task(int id, String title, String description) {
+        this(id, title, description, TaskType.TASK);
     }
 
     public int getId() {
@@ -35,6 +41,10 @@ public class Task {
         this.status = status;
     }
 
+    public TaskType getType() {
+        return type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,7 +65,7 @@ public class Task {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
+                ", type=" + type +
                 '}';
     }
-
 }

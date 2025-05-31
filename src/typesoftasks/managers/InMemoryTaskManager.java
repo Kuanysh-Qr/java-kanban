@@ -11,12 +11,24 @@ public class InMemoryTaskManager implements TaskManager {
     private final Map<Integer, Task> tasks = new HashMap<>();
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
-    private final HistoryManager historyManager = new InMemoryHistoryManager(); // новая история
+    private final HistoryManager historyManager = new InMemoryHistoryManager();
 
     private int currentId = 1;
 
     private int generateId() {
         return currentId++;
+    }
+
+    protected Map<Integer, Task> getTaskMap() {
+        return tasks;
+    }
+
+    protected Map<Integer, Epic> getEpicMap() {
+        return epics;
+    }
+
+    protected Map<Integer, Subtask> getSubtaskMap() {
+        return subtasks;
     }
 
     @Override
