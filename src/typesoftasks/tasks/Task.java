@@ -18,7 +18,7 @@ public class Task {
     }
 
     public Task(int id, String title, String description) {
-        this(id, title, description, TaskType.TASK);
+        this(id, title, description, TaskType.TASK); // по умолчанию TASK
     }
 
     public int getId() {

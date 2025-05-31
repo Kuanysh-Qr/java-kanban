@@ -11,7 +11,7 @@ public class InMemoryTaskManager implements TaskManager {
     private final Map<Integer, Task> tasks = new HashMap<>();
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
-    private final HistoryManager historyManager = new InMemoryHistoryManager();
+    private final HistoryManager historyManager = new InMemoryHistoryManager(); // новая история
 
     private int currentId = 1;
 
@@ -19,6 +19,7 @@ public class InMemoryTaskManager implements TaskManager {
         return currentId++;
     }
 
+    // Эти методы нужны для FileBackedTaskManager
     protected Map<Integer, Task> getTaskMap() {
         return tasks;
     }
