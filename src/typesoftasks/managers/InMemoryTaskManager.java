@@ -30,6 +30,7 @@ public class InMemoryTaskManager implements TaskManager {
     protected Map<Integer, Subtask> getSubtaskMap() {
         return subtasks;
     }
+
     @Override
     public Task createTask(String title, String description) {
         Task task = new Task(generateId(), title, description);
