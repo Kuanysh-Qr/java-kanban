@@ -58,14 +58,10 @@ public class Task {
         return Objects.hash(id);
     }
 
-    @Override
+    /* @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", type=" + type +
-                '}';
-    }
+        return "Task{" + "id=" + id + ", title='" + title + '\'' + ", " +
+                "description='" + description + '\'' + "," +
+                "status=" + status + ", type=" + type + '}';
+    } */
 }
