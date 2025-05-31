@@ -19,7 +19,6 @@ public class InMemoryTaskManager implements TaskManager {
         return currentId++;
     }
 
-    // Эти методы нужны для FileBackedTaskManager
     protected Map<Integer, Task> getTaskMap() {
         return tasks;
     }
@@ -31,7 +30,6 @@ public class InMemoryTaskManager implements TaskManager {
     protected Map<Integer, Subtask> getSubtaskMap() {
         return subtasks;
     }
-
     @Override
     public Task createTask(String title, String description) {
         Task task = new Task(generateId(), title, description);
