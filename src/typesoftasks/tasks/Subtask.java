@@ -3,11 +3,10 @@ package typesoftasks.tasks;
 import java.util.Objects;
 
 public class Subtask extends Task {
-
     private final int epicId;
 
     public Subtask(int id, String title, String description, int epicId) {
-        super(id, title, description);
+        super(id, title, description, TaskType.SUBTASK);
         this.epicId = epicId;
     }
 
