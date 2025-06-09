@@ -1,4 +1,4 @@
-package test.java.typesoftasks.managers;
+package test;
 
 import typesoftasks.managers.InMemoryTaskManager;
 import typesoftasks.tasks.Task;
