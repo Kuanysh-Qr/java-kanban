@@ -1,4 +1,0 @@
-./test/FileBackedTaskManagerTest.java
-./test/InMemoryHistoryManagerTest.java
-./test/InMemoryTaskManagerTest.java
-./test/TaskTest.java
