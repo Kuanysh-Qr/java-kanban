@@ -1,4 +1,4 @@
-package typestest;
+package test.java.typesoftasks.managers;
 
 import typesoftasks.managers.InMemoryHistoryManager;
 import typesoftasks.tasks.Epic;
@@ -84,6 +84,32 @@ class InMemoryHistoryManagerTest {
         List<Task> history = historyManager.getHistory();
 
         assertEquals(List.of(task1, task2, task3), history);
+    }
+
+    @Test
+    void shouldRemoveFromStartMiddleAndEnd() {
+        InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
+
+        Task task1 = new Task(1, "Task 1", "Description 1");
+        Task task2 = new Task(2, "Task 2", "Description 2");
+        Task task3 = new Task(3, "Task 3", "Description 3");
+
+        historyManager.add(task1);
+        historyManager.add(task2);
+        historyManager.add(task3);
+
+        // Удаление из начала
+        historyManager.remove(1);
+        assertEquals(List.of(task2, task3), historyManager.getHistory());
+
+        // Удаление из середины
+        historyManager.add(task1); // task1 снова в конце
+        historyManager.remove(2);
+        assertEquals(List.of(task3, task1), historyManager.getHistory());
+
+        // Удаление из конца
+        historyManager.remove(1);
+        assertEquals(List.of(task3), historyManager.getHistory());
     }
 
 

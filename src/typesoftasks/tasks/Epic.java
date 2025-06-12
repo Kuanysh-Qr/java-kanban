@@ -1,16 +1,18 @@
 package typesoftasks.tasks;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Epic extends Task {
 
-    private final List<Integer> subtaskIds;
+    private final List<Integer> subtaskIds = new ArrayList<>();
+    private LocalDateTime endTime;
 
     public Epic(int id, String title, String description) {
         super(id, title, description, TaskType.EPIC);
-        this.subtaskIds = new ArrayList<>();
     }
 
     public List<Integer> getSubtasks() {
@@ -30,6 +32,43 @@ public class Epic extends Task {
 
     public void clearSubtasks() {
         subtaskIds.clear();
+    }
+
+    public void recalculateTimeFields(List<Subtask> allSubtasks) {
+        Duration totalDuration = Duration.ZERO;
+        LocalDateTime earliestStart = null;
+        LocalDateTime latestEnd = null;
+
+        for (Integer subId : subtaskIds) {
+            for (Subtask subtask : allSubtasks) {
+                if (subtask.getId() == subId) {
+                    Duration dur = subtask.getDuration();
+                    LocalDateTime start = subtask.getStartTime();
+                    LocalDateTime end = subtask.getEndTime();
+
+                    if (dur != null) {
+                        totalDuration = totalDuration.plus(dur);
+                    }
+
+                    if (start != null && (earliestStart == null || start.isBefore(earliestStart))) {
+                        earliestStart = start;
+                    }
+
+                    if (end != null && (latestEnd == null || end.isAfter(latestEnd))) {
+                        latestEnd = end;
+                    }
+                }
+            }
+        }
+
+        setDuration(totalDuration);
+        setStartTime(earliestStart);
+        this.endTime = latestEnd;
+    }
+
+    @Override
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
     @Override
