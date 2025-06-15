@@ -3,8 +3,7 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpServer;
-import typesoftasks.json.DurationAdapter; // <-- не забудь создать и положить сюда
-import typesoftasks.managers.InMemoryTaskManager;
+import typesoftasks.json.DurationAdapter;
 import typesoftasks.managers.TaskManager;
 
 import java.io.IOException;

@@ -7,7 +7,6 @@ import java.nio.charset.StandardCharsets;
 
 public class BaseHttpHandler  {
 
-    // Успешный ответ с текстом (чаще всего JSON)
     protected void sendText(HttpExchange exchange, String text) throws IOException {
         byte[] resp = text.getBytes(StandardCharsets.UTF_8);
         exchange.getResponseHeaders().add("Content-Type", "application/json;charset=utf-8");
@@ -15,7 +14,6 @@ public class BaseHttpHandler  {
         exchange.getResponseBody().write(resp);
     }
 
-    // Ответ: объект не найден
     protected void sendNotFound(HttpExchange exchange) throws IOException {
         String message = "{\"error\": \"Объект не найден\"}";
         byte[] resp = message.getBytes(StandardCharsets.UTF_8);
@@ -24,7 +22,6 @@ public class BaseHttpHandler  {
         exchange.getResponseBody().write(resp);
     }
 
-    // Ответ: задача пересекается по времени
     protected void sendHasInteractions(HttpExchange exchange) throws IOException {
         String message = "{\"error\": \"Задача пересекается с уже существующей\"}";
         byte[] resp = message.getBytes(StandardCharsets.UTF_8);
