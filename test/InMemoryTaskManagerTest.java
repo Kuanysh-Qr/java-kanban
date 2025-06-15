@@ -2,6 +2,7 @@ package test.java.typesoftasks.managers;
 
 import typesoftasks.tasks.Epic;
 import typesoftasks.managers.InMemoryTaskManager;
+import typesoftasks.managers.NotFoundException;
 import typesoftasks.tasks.Subtask;
 import typesoftasks.tasks.Task;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,9 @@ class InMemoryTaskManagerTest {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
         Task task = taskManager.createTask("Task 1", "Description of Task 1");
 
-        assertNotNull(task, "Задача не должна быть null");
-        assertEquals("Task 1", task.getTitle(), "Заголовок задачи не совпадает.");
-        assertEquals("Description of Task 1", task.getDescription(), "Описание задачи не совпадает.");
+        assertNotNull(task);
+        assertEquals("Task 1", task.getTitle());
+        assertEquals("Description of Task 1", task.getDescription());
     }
 
     @Test
@@ -30,9 +31,9 @@ class InMemoryTaskManagerTest {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
         Epic epic = taskManager.createEpic("Epic 1", "Description of Epic 1");
 
-        assertNotNull(epic, "Эпик не должен быть null");
-        assertEquals("Epic 1", epic.getTitle(), "Заголовок эпика не совпадает.");
-        assertEquals("Description of Epic 1", epic.getDescription(), "Описание эпика не совпадает.");
+        assertNotNull(epic);
+        assertEquals("Epic 1", epic.getTitle());
+        assertEquals("Description of Epic 1", epic.getDescription());
     }
 
     @Test
@@ -41,7 +42,7 @@ class InMemoryTaskManagerTest {
         Epic epic = taskManager.createEpic("Epic 1", "Description of Epic 1");
         Subtask subtask = taskManager.createSubtask("Subtask 1", "Description of Subtask 1", epic.getId());
 
-        assertTrue(epic.getSubtasks().contains(subtask.getId()), "Подзадача должна быть добавлена к эпик.");
+        assertTrue(epic.getSubtasks().contains(subtask.getId()));
     }
 
     @Test
@@ -50,8 +51,8 @@ class InMemoryTaskManagerTest {
         Task task = taskManager.createTask("Task 1", "Description of Task 1");
 
         Task retrievedTask = taskManager.getTask(task.getId());
-        assertNotNull(retrievedTask, "Задача должна быть найдена.");
-        assertEquals(task, retrievedTask, "Задачи не совпадают.");
+        assertNotNull(retrievedTask);
+        assertEquals(task, retrievedTask);
     }
 
     @Test
@@ -60,8 +61,8 @@ class InMemoryTaskManagerTest {
         Epic epic = taskManager.createEpic("Epic 1", "Description of Epic 1");
 
         Epic retrievedEpic = taskManager.getEpic(epic.getId());
-        assertNotNull(retrievedEpic, "Эпик должен быть найден.");
-        assertEquals(epic, retrievedEpic, "Эпики не совпадают.");
+        assertNotNull(retrievedEpic);
+        assertEquals(epic, retrievedEpic);
     }
 
     @Test
@@ -70,8 +71,7 @@ class InMemoryTaskManagerTest {
         Task task = taskManager.createTask("Task 1", "Description of Task 1");
         taskManager.deleteTaskById(task.getId());
 
-        Task retrievedTask = taskManager.getTask(task.getId());
-        assertNull(retrievedTask, "Задача должна быть удалена.");
+        assertThrows(NotFoundException.class, () -> taskManager.getTask(task.getId()));
     }
 
     @Test
@@ -80,8 +80,7 @@ class InMemoryTaskManagerTest {
         Epic epic = taskManager.createEpic("Epic 1", "Description of Epic 1");
         taskManager.deleteEpicById(epic.getId());
 
-        Epic retrievedEpic = taskManager.getEpic(epic.getId());
-        assertNull(retrievedEpic, "Эпик должен быть удален.");
+        assertThrows(NotFoundException.class, () -> taskManager.getEpic(epic.getId()));
     }
 
     @Test
@@ -91,8 +90,7 @@ class InMemoryTaskManagerTest {
         Subtask subtask = taskManager.createSubtask("Subtask 1", "Description of Subtask 1", epic.getId());
         taskManager.deleteSubtaskById(subtask.getId());
 
-        Subtask retrievedSubtask = taskManager.getSubtaskById(subtask.getId());
-        assertNull(retrievedSubtask, "Подзадача должна быть удалена.");
+        assertThrows(NotFoundException.class, () -> taskManager.getSubtaskById(subtask.getId()));
     }
 
     @Test
@@ -104,8 +102,8 @@ class InMemoryTaskManagerTest {
 
         List<Task> history = taskManager.getHistory();
 
-        assertEquals(1, history.size(), "История должна содержать одну задачу.");
-        assertEquals(task, history.get(0), "Задача в истории не совпадает.");
+        assertEquals(1, history.size());
+        assertEquals(task, history.get(0));
     }
 
     @Test
@@ -173,12 +171,9 @@ class InMemoryTaskManagerTest {
         taskManager.updateTask(task1);
 
         Task task2 = taskManager.createTask("T2", "desc");
-        task2.setStartTime(LocalDateTime.of(2025, 6, 10, 10, 30)); // пересекается
+        task2.setStartTime(LocalDateTime.of(2025, 6, 10, 10, 30));
         task2.setDuration(Duration.ofMinutes(60));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            taskManager.updateTask(task2);
-        });
+        assertThrows(IllegalArgumentException.class, () -> taskManager.updateTask(task2));
     }
-
 }
